@@ -34,6 +34,9 @@ gem 'blueprinter'
 # HTTP Client
 gem 'faraday'
 
+# API Documentation
+gem 'rswag'
+
 # Admin Panel
 gem 'activeadmin'
 
@@ -50,7 +53,9 @@ group :development, :test do
   gem 'annotate'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'fuubar'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rswag-specs'
   gem 'rubocop', '~> 1.18', require: false
 end
 

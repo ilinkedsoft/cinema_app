@@ -1,0 +1,92 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/movies/{id}/details":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: fetch more details about specific movie from OMDB API
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+  "/api/v1/movies":
+    get:
+      summary: fetch movies listing
+      responses:
+        '200':
+          description: successful
+  "/api/v1/movies/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: fetch movie detailed info including ratings
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+  "/api/v1/movies/{movie_id}/ratings/leave_review":
+    parameters:
+    - name: movie_id
+      in: path
+      description: movie_id
+      required: true
+      schema:
+        type: string
+    post:
+      summary: leave a review rating
+      parameters: []
+      responses:
+        '201':
+          description: created
+        '400':
+          description: bad request
+        '404':
+          description: not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stars:
+                  type: integer
+                comment:
+                  type: string
+              required:
+              - stars
+  "/api/v1/movies/{movie_id}/ratings":
+    parameters:
+    - name: movie_id
+      in: path
+      description: movie_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: fetch movie ratings
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

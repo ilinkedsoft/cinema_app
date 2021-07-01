@@ -12,7 +12,7 @@ class Api::V1::RatingsController < ApplicationController
     if rating.save
       json_response(RatingBlueprint.render(rating, view: :extended), :created)
     else
-      json_response({ errors: rating.errors.full_messages, error_code: "rating_creation_failed" }, :bad_request)
+      json_response({ errors: rating.errors.full_messages, error_code: 'rating_creation_failed' }, :bad_request)
     end
   end
 
@@ -29,6 +29,6 @@ class Api::V1::RatingsController < ApplicationController
   def movie
     return if @movie = Movie.find_by(id: params[:movie_id])
 
-    json_response({ error: "Movie could not be found.", error_code: "not_found" }, :not_found)
+    json_response({ error: 'Movie could not be found.', error_code: 'not_found' }, :not_found)
   end
 end
