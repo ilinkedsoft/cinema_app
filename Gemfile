@@ -28,11 +28,14 @@ gem 'sassc-rails'
 # Validate dates
 gem 'date_validator'
 
+# JSON Format
+gem 'blueprinter'
+
 # Admin Panel
 gem 'activeadmin'
 
-gem 'devise'
 gem 'cancancan'
+gem 'devise'
 gem 'draper'
 gem 'pundit'
 
@@ -41,10 +44,11 @@ gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 5.0.0'
-  gem 'factory_bot_rails'
   gem 'annotate'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rubocop', '~> 1.18', require: false
 end
 
 group :development do
@@ -54,4 +58,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

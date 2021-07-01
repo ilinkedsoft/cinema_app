@@ -13,6 +13,8 @@
 #  updated_at :datetime         not null
 #
 class Movie < ApplicationRecord
+  has_many :ratings, dependent: :destroy
+  
   validates :title, :imdb_id, :starts, :ends, presence: true
   validates :title, uniqueness: true
   validates :ends, date: { after: :starts }
