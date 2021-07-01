@@ -9,7 +9,7 @@ ActiveAdmin.register Movie do
   # or
   #
   permit_params do
-    permitted = [:title, :imdb_id, :starts, :ends, :price, :currency]
+    permitted = %i[title imdb_id starts ends price currency]
     permitted
   end
 
@@ -18,7 +18,7 @@ ActiveAdmin.register Movie do
       f.input :title, label: 'Title'
       f.input :imdb_id, label: 'imdb ID'
       f.input :price, label: 'Price'
-      f.input :currency, label: 'Currency'
+      f.input :currency, label: 'Currency', as: :select, collection: %w[USD Euro]
       f.input :starts, as: :datepicker, label: 'Start Date'
       f.input :ends, as: :datepicker, label: 'End Date'
     end

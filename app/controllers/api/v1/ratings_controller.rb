@@ -3,16 +3,16 @@ class Api::V1::RatingsController < ApplicationController
   before_action :ratings, only: :index
 
   def index
-    render json: RatingBlueprint.render(@ratings, view: :extended), status: :ok
+    json_response(RatingBlueprint.render(@ratings, view: :extended))
   end
 
   def create
     rating = @movie.ratings.new(rating_params)
 
     if rating.save
-      render json: RatingBlueprint.render(rating, view: :extended), status: :created
+      json_response(RatingBlueprint.render(rating, view: :extended), :created)
     else
-      render json: { errors: rating.errors.full_messages, error_code: "rating_creation_failed" }, status: :bad_request
+      json_response({ errors: rating.errors.full_messages, error_code: "rating_creation_failed" }, :bad_request)
     end
   end
 
@@ -29,6 +29,6 @@ class Api::V1::RatingsController < ApplicationController
   def movie
     return if @movie = Movie.find_by(id: params[:movie_id])
 
-    render json: { error: "Movie could not be found.", error_code: "not_found" }, status: :bad_request
+    json_response({ error: "Movie could not be found.", error_code: "not_found" }, :not_found)
   end
 end

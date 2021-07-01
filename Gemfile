@@ -31,6 +31,9 @@ gem 'date_validator'
 # JSON Format
 gem 'blueprinter'
 
+# HTTP Client
+gem 'faraday'
+
 # Admin Panel
 gem 'activeadmin'
 

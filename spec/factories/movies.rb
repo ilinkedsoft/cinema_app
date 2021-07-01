@@ -20,5 +20,7 @@ FactoryBot.define do
     imdb_id { 'tt0232500' }
     starts { Time.current }
     ends { 1.hour.from_now }
+    price { 100 }
+    currency { 'Euro' }
   end
 end

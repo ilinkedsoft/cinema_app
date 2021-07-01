@@ -14,8 +14,9 @@
 #
 class Movie < ApplicationRecord
   has_many :ratings, dependent: :destroy
-  
-  validates :title, :imdb_id, :starts, :ends, presence: true
+
+  validates :title, :imdb_id, :starts, :ends, :price, presence: true
   validates :title, uniqueness: true
+  validates :currency, inclusion: { in: %w[USD Euro] }
   validates :ends, date: { after: :starts }
 end
